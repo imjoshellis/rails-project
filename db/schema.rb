@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_161720) do
     t.string "description"
     t.integer "effort"
     t.integer "value"
+    t.string "status"
     t.integer "sprint_id"
     t.integer "goal_id"
     t.datetime "created_at", precision: 6, null: false

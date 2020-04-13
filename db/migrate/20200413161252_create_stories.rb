@@ -5,6 +5,7 @@ class CreateStories < ActiveRecord::Migration[6.0]
       t.string :description
       t.integer :effort
       t.integer :value
+      t.string :status
       t.integer :sprint_id
       t.integer :goal_id
 
