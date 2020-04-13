@@ -14,7 +14,7 @@ description:string
 
 has_many :goals
 has_many :issues
-belongs_to :projects
+belongs_to :projects, through => :goals
 has_many :users, through => :projects
 
 name:string
@@ -57,6 +57,7 @@ belongs_to :project
 
 belongs_to :role
 has_many :projects, through => :user_projects
+has_secure_password
 
 name:string
 email:string
