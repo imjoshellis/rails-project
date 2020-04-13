@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get "/", to: "projects#index"
-  get "/login", to: "sessions#new"
-  post "/login", to: "sessions#create"
+  root "projects#index"
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  get "/logout" => "sessions#destroy"
   get "sessions/create"
   resources :roles
   resources :users
