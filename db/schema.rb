@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_161720) do
 
   create_table "sprints", force: :cascade do |t|
     t.string "name"
+    t.integer "project_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", precision: 6, null: false
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_04_13_161720) do
     t.integer "effort"
     t.integer "value"
     t.integer "sprint_id"
+    t.integer "goal_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
