@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
+
   def new
     redirect_to root_path unless session[:user_id].nil?
   end
@@ -15,6 +17,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_to root_path
+    redirect_to login_path
   end
 end
