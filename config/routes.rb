@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/", to: "sessions#new"
+  get "sessions/create"
   resources :roles
   resources :users
   resources :stories
