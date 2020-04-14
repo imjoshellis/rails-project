@@ -17,12 +17,12 @@ roles = [
 Role.create(roles)
 
 users = [
-  {name: "Josh", email: "josh@imjoshellis.com", password: "josh", role_id: 1},
-  {name: "Chris", email: "chris@email.com", password: "chris", role_id: 2},
-  {name: "Anna", email: "anna@email.com", password: "anna", role_id: 2},
-  {name: "Rachel", email: "rachel@email.com", password: "rachel", role_id: 3},
-  {name: "Frank", email: "frank@email.com", password: "frank", role_id: 4},
-  {name: "Guest", email: "guest@email.com", password: "guest", role_id: 5}
+  {name: "Josh", email: "josh@imjoshellis.com", password: "joshjosh", role_id: 1},
+  {name: "Chris", email: "chris@email.com", password: "chrischris", role_id: 2},
+  {name: "Anna", email: "anna@email.com", password: "annaanna", role_id: 2},
+  {name: "Rachel", email: "rachel@email.com", password: "rachelrachel", role_id: 3},
+  {name: "Frank", email: "frank@email.com", password: "frankfrank", role_id: 4},
+  {name: "Guest", email: "guest@email.com", password: "guestguest", role_id: 5}
 ]
 
 User.create(users)
