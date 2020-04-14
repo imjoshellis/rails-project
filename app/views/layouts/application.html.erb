@@ -13,12 +13,21 @@
   </head>
 
   <body class="layout-default">
-  <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+    <%= render 'nav' %>
+      <% if notice %>
+        <section class="section">
+          <div class="container">
+            <div class="notification is-success"><%= notice %></div>
+          </div>
+        </section>
+      <% end %>
+      <% if alert %>
+        <section class="section">
+          <div class="container">
+            <div class="notification is-warning"><%= alert %></div>
+          </div>
+        </section>
+      <% end %>
     <%= yield %>
   </body>
 </html>
