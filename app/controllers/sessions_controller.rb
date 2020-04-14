@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :require_login
 
   def new
-    redirect_to root_path unless session[:user_id].nil?
+    redirect_to root_path unless current_user
   end
 
   def create
