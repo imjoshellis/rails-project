@@ -4,9 +4,9 @@
       <div class="column is-half is-offset-one-quarter has-background-light p-8 rounded-lg flex flex-col items-center justify-center">
         <%= image_tag("logo-black.png", class: "max-w-sm") %>
         <h1 class="text-xl font-bold text-gray-900">Login to your account</h1>
+        
         <div class="w-full">
-          <%= form_for :user, url: '/login' do |f| %>
-<%= form_for(:user, as: user, url: session_path(user)) do |f| %>
+<%= form_for(:user, url: session_path(:user)) do |f| %>
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
@@ -45,4 +45,3 @@
   </div>
 </section>
 
-<%= render "devise/shared/links" %>
