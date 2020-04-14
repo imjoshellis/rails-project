@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "projects#index"
-  get "/login" => "sessions#new"
-  post "/login" => "sessions#create"
-  get "/logout" => "sessions#destroy"
-  get "sessions/create"
   resources :roles
   resources :users
   resources :stories
