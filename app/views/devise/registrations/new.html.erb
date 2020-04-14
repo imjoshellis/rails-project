@@ -43,11 +43,9 @@
         <div class="py-4 w-full flex flex-col items-center justify-center">
           <p class="pb-4">or</p>
           <div class="field w-full">
-            <button class="button is-fullwidth">github</button>
+          <%= link_to "Sign up with GitHub", user_github_omniauth_authorize_path, :class => "button is-fullwidth" %>
           </div>
-          <div class="field w-full">
-            <button class="button is-fullwidth">google</button>
-          </div>
+        </div>
         </div>
       </div>
     </div>
