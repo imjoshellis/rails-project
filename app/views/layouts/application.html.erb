@@ -13,6 +13,21 @@
   </head>
 
   <body class="layout-default">
+    <%= render 'nav' %>
+      <% if notice %>
+        <section class="section">
+          <div class="container">
+            <div class="notification is-success"><%= notice %></div>
+          </div>
+        </section>
+      <% end %>
+      <% if alert %>
+        <section class="section">
+          <div class="container">
+            <div class="notification is-warning"><%= alert %></div>
+          </div>
+        </section>
+      <% end %>
     <%= yield %>
   </body>
 </html>
