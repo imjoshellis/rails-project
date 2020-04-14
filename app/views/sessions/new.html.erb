@@ -1,21 +1,45 @@
-<div class="h-screen w-screen bg-gray-800 flex flex-row justify-center items-center">
-    <div class="bg-gray-300 text-gray-800 max-w-lg w-4/5 rounded p-4 flex flex-col justify-center items-center">
+<section class="section is-large has-background-dark">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter has-background-light p-8 rounded-lg flex flex-col items-center justify-center">
         <%= image_tag("logo-black.png", class: "max-w-sm") %>
         <h1 class="text-xl font-bold text-gray-900">Login to your account</h1>
-        <%= form_for :user, url: '/login' do |f| %>
-        <%= f.email_field :email, placeholder: "your email", class: "mt-4 p-4 rounded w-full" %>
-        <%= f.password_field :password, placeholder: "your password", class: "mt-4 p-4 rounded w-full" %>
-        <%= f.submit "Login", class: "my-4 p-4 rounded bg-blue-600 text-blue-100 w-full" %>
-        <% end %>
-    <p class="text-blue-500 underline">Forgot password?</p>
-    <div class="py-4 w-full flex flex-col items-center justify-center">
-        <p>or</p>
-        <button class="mt-2 p-4 rounded bg-gray-100 text-gray-600 w-full">github</button>
-        <button class="mt-2 p-4 rounded bg-gray-100 text-gray-600 w-full">google</button>
-    </div>
-    <div class="py-4 flex flex-col items-center justify-center">
-        <p class="text-blue-500 underline">Create a new account</p>
-        <p class="text-blue-500 underline">Login as guest (limited functionality)</p>
+        <div class="w-full">
+          <%= form_for :user, url: '/login' do |f| %>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <%= f.email_field :email, placeholder: "your email", class: "input" %>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <%= f.password_field :password, placeholder: "your password", class: "input" %>
+              </div>
+        <p class="text-sm py-2 text-blue-500 underline">Forgot password?</p>
+            </div>
+            <div class="field">
+              <div class="control">
+                <%= f.submit "Login", class: "button is-link is-fullwidth" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="py-4 w-full flex flex-col items-center justify-center">
+          <p class="pb-4">or</p>
+          <div class="field w-full">
+            <button class="button is-fullwidth">github</button>
+          </div>
+          <div class="field w-full">
+            <button class="button is-fullwidth">google</button>
+          </div>
+        </div>
+        <div class="py-4 flex flex-col items-center justify-center">
+          <p class="text-blue-500 underline">Create a new account</p>
+          <p class="text-blue-500 underline">Login as guest (limited functionality)</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
