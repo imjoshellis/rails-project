@@ -1,0 +1,14 @@
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Projects
+      </p>
+     <% @projects.each do |p| %>
+      <a href="<%= project_path(p)%>" class="panel-block is-active">
+        <%= p.name %>
+      </a>
+      <% end %>
+    </nav>
+  </div>
+</section>
