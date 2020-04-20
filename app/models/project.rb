@@ -4,4 +4,7 @@ class Project < ApplicationRecord
   has_many :goals
   has_many :sprints, through: :goals
   has_many :stories, through: :sprints
+
+  validates :name, presence: true, length: {in: 6..20}
+  validates :description, length: {maximum: 600}
 end

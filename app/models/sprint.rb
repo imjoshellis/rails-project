@@ -3,4 +3,6 @@ class Sprint < ApplicationRecord
   has_many :issues
   belongs_to :project
   has_many :users, through: :project
+
+  validates :name, presence: true, length: {in: 6..20}
 end
