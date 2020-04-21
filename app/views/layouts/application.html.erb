@@ -28,6 +28,17 @@
           </div>
         </section>
       <% end %>
-    <%= yield %>
+      <section class="section">
+      <div class="container columns">
+      <div class="column is-3">
+      <aside class="menu">
+       <%= yield(:side_menu) %>
+      </aside>
+      </div>
+      <div class="column">
+      <%= yield %>
+      </div>
+      </div>
+      </section>
   </body>
 </html>
