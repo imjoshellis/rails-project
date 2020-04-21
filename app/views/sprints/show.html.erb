@@ -1,0 +1,51 @@
+<section class='section'>
+  <div class='container'>
+    <h2 class="title"> Sprint: <%= @sprint.name %> </h2>
+    <nav class="panel">
+      <p class="panel-heading"> Stories </p>
+        <% @sprint.stories.uniq.each do |s| %>
+        <a href="<%= sprint_stories_path(@sprint, s) %>" class="is-active">
+        <div href="" class="panel-block flex flex-row justify-between">
+          
+            <div class="">
+              <%= s.name %>&nbsp;
+              <% case s.status %>
+              <% when "doing" %>
+                <span class="tag is-warning">doing</span>
+              <% when "closed" %>
+                <span class="tag is-success">closed</span>
+              <% when "todo" %>
+                <span class="tag is-danger">todo</span>
+              <% end %> 
+            </div>
+            
+          <div class="buttons">
+            <%= link_to "View", sprint_story_path(@sprint, s), class: "button is-small is-light" %>
+            <%= link_to "Edit", edit_sprint_story_path(@sprint, s), class: "button is-primary is-small is-light" %>
+            <%= link_to "Delete", sprint_story_path(@sprint, s), method: :delete, data: { confirm: "Are you sure you want to delete \"#{s.name}?\"" }, class: "button is-danger is-small is-light" %>
+          
+          </div></div></a>
+        <% end %>
+        <%= link_to "+ New Story", new_sprint_story_path(@sprint), class: "panel-block is-active" %>
+    </nav>
+    <div class="columns">
+      <div class="column is-6">
+      <nav class="panel">
+        <p class="panel-heading"> Dates </p>
+        <p class="panel-block"> Start: <%= @sprint.start_date.strftime("%m/%d/%Y") %> </p>
+        <p class="panel-block"> End: <%= @sprint.end_date.strftime("%m/%d/%Y") %> </p>
+        <%= link_to "Edit Dates", edit_sprint_path(@sprint), class: "panel-block is-active" %>
+      </nav>
+      </div>
+      <div class="column is-6">
+      <nav class="panel">
+        <p class="panel-heading"> Goals </p>
+        <% @sprint.goals.uniq.each do |g| %>
+          <%= link_to g.name, goal_path(g), class: "panel-block is-active" %>
+        <% end %>
+      </nav>
+      </div>
+    </div> 
+    <%= link_to "< Back to project", project_path(@sprint.project), class: "button" %>
+  </div>
+</section>
