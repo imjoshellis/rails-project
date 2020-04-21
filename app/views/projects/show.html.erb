@@ -1,18 +1,19 @@
+<% content_for :side_menu do %>
+<%= render 'menu' %>
+<% end %>
 <section class='section'>
   <div class='container'>
       <h2 class="title">
-        <%= @project.name %>
+        Project: <%= @project.name %>
       </h2>
     <div class="buttons">
       <%= link_to "Edit", edit_project_path(@project), class: "button is-primary" %>
       <%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@project.name}?\"" }, class: "button is-danger" %>
     </div>
-      <div class="content">
         <nav class="panel">
           <p class="panel-heading"> Description </p>
           <p class="panel-block"> <%= @project.description %> </p>
         </nav>
-      </div>
       <div class="columns">
         <div class="column is-6">
           <nav class="panel">
@@ -20,9 +21,9 @@
             Sprints
             </p>
             <% @project.sprints.uniq.each do |s| %>
-              <%= link_to s.name, sprint_path(s), class: "panel-block is-active" %>
+              <%= link_to s.name, project_sprint_path(@project, s), class: "panel-block is-active" %>
             <% end %>
-            <%= link_to "+ New Sprint", new_sprint_path, class: "panel-block is-active" %>
+            <%= link_to "+ New Sprint", new_project_sprint_path(@project), class: "panel-block is-active" %>
           </nav>
         </div>
         <div class="column is-6">
@@ -31,9 +32,9 @@
             Goals
             </p>
             <% @project.goals.each do |g| %>
-              <%= link_to g.name, sprint_path(g), class: "panel-block is-active" %>
+              <%= link_to g.name, project_goal_path(@project, g), class: "panel-block is-active" %>
             <% end %>
-            <%= link_to "+ New Goal", new_goal_path, class: "panel-block is-active" %>
+            <%= link_to "+ New Goal", new_project_goal_path(@project), class: "panel-block is-active" %>
           </nav>
         </div>
         </div>
