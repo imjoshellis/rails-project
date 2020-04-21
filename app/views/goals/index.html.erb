@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Goals
+      </p>
+    <% @goals.each do |g| %>
+      <%= link_to "#{g.project_name} › #{g.name}", goal_path(g), class: "panel-block is-active" %>
+    <% end %>
+    <%= link_to "+ New Goal", new_goal_path, class: "panel-block is-active" %>
+    </nav>
+  </div>
+</section>
