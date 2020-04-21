@@ -5,4 +5,8 @@ class Sprint < ApplicationRecord
   has_many :users, through: :project
 
   validates :name, presence: true, length: {in: 6..20}
+
+  def project_name
+    project.name
+  end
 end
