@@ -1,0 +1,13 @@
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Sprints
+      </p>
+    <% @sprints.each do |s| %>
+      <%= link_to "#{s.project_name} › #{s.name}", sprint_path(s), class: "panel-block is-active" %>
+    <% end %>
+    <%= link_to "+ New Sprint", new_sprint_path, class: "panel-block is-active" %>
+    </nav>
+  </div>
+</section>
