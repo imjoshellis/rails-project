@@ -1,6 +1,6 @@
 class Sprint < ApplicationRecord
   has_many :goals
-  has_many :issues
+  has_many :stories
   belongs_to :project
   has_many :users, through: :project
 
