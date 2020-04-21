@@ -1,3 +1,6 @@
+<% content_for :side_menu do %>
+<%= render 'menu' %>
+<% end %>
 <section class="section">
   <div class="container">
     <nav class="panel">
@@ -5,10 +8,9 @@
         Projects
       </p>
      <% @projects.each do |p| %>
-      <a href="<%= project_path(p)%>" class="panel-block is-active">
-        <%= p.name %>
-      </a>
+      <%= link_to p.name, project_path(p), class: "panel-block is-active" %>
       <% end %>
+    <%= link_to "+ New Project", new_project_path, class: "panel-block is-active" %>
     </nav>
   </div>
 </section>
