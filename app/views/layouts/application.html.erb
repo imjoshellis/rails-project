@@ -29,12 +29,14 @@
         </section>
       <% end %>
       <section class="section">
-      <div class="container columns">
+      <div class="container columns is-fluid">
+      <% if current_user %>
       <div class="column is-3">
       <aside class="menu">
        <%= yield(:side_menu) %>
       </aside>
       </div>
+      <% end %>
       <div class="column">
       <%= yield %>
       </div>
