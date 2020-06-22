@@ -1,5 +1,9 @@
 class GoalsController < ApplicationController
   def index
-    @goals = Goal.all
+    @goals = if params[:project_id]
+      Project.find(params[:project_id]).goals
+    else
+      Goal.all
+    end
   end
 end
