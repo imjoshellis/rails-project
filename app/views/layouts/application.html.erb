@@ -30,11 +30,13 @@
       <% end %>
       <section class="section">
       <div class="container columns">
+      <% if alert %>
       <div class="column is-3">
       <aside class="menu">
        <%= yield(:side_menu) %>
       </aside>
       </div>
+      <% end %>
       <div class="column">
       <%= yield %>
       </div>
