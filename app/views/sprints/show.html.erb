@@ -1,10 +1,13 @@
+<% content_for :side_menu do %>
+<%= render 'menu' %>
+<% end %>
 <section class='section'>
   <div class='container'>
     <h2 class="title"> Sprint: <%= @sprint.name %> </h2>
     <nav class="panel">
       <p class="panel-heading"> Stories </p>
         <% @sprint.stories.uniq.each do |s| %>
-        <a href="<%= sprint_stories_path(@sprint, s) %>" class="is-active">
+        <a href="<%= sprint_story_path(@sprint, s) %>" class="is-active">
         <div href="" class="panel-block flex flex-row justify-between">
           
             <div class="">
