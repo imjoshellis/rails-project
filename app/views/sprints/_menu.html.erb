@@ -1,9 +1,8 @@
-<%= link_to "All Projects", projects_path, class: "menu-label" %>
 <ul class="menu-list">
   <% Project.all.each do |p| %>
-  <li><%= link_to p.name, project_path(p), class: menu_link_class(project_path(p), request.path) %>
-  <% if project_path(p) == request.path %>
-  <%= link_to "Sprints", project_sprints_path(p), class: "menu-label" %>
+  <li><%= link_to menu_project_name(project_sprints_path(p), request.path, p.name), project_path(p), class: menu_link_class(project_path(p), request.path) %>
+  <% if p.sprints == @sprints || p.sprints.includes(@sprint) %>
+  <%= link_to "Sprints", project_sprints_path(p), class: "menu-label "+menu_link_class(project_sprints_path(p), request.path) %>
     <ul class="menu-list">
       <% p.sprints.each do |s| %>
         <li><%= link_to s.name, project_sprint_path(p, s), class: menu_link_class(project_sprint_path(p, s), request.path) %> </li>
