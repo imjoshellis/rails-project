@@ -6,13 +6,13 @@
   <%= link_to "Sprints", project_sprints_path(p), class: "menu-label "+menu_link_class(project_sprints_path(p), request.path) %>
     <ul class="menu-list">
       <% p.sprints.each do |s| %>
-        <li><%= link_to s.name, project_sprint_path(p, s), class: menu_link_class(project_sprint_path(p, s), request.path) %> </li>
+        <li><%= link_to s.name, project_sprint_path(p, s), class: menu_link_class(current_sprint, s) %> </li>
       <% end %>
     </ul>
   <%= link_to "Goals", project_goals_path(p), class: "menu-label "+menu_link_class(project_goals_path(p), request.path) %>
     <ul class="menu-list">
       <% p.goals.each do |g| %>
-        <li><%= link_to g.name, project_goal_path(p, g), class: menu_link_class(project_goal_path(p, g), request.path) %> </li>
+        <li><%= link_to g.name, project_goal_path(p, g), class: menu_link_class(current_goal, g) %> </li>
       <% end %>
     </ul>
     <% else %>
