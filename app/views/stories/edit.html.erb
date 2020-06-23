@@ -1,0 +1,30 @@
+
+<h2>Edit <%= @story.name %></h2>
+
+<%= form_for(@story, url: story_path(@story), html: { method: :patch }) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, [['todo'],['doing'],['closed']] %>
+  </div>
+
+  <div class="field">
+    <%= f.label :effort %><br />
+    <%= f.select :effort, [10,9,8,7,6,5,4,3,2,1] %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%= link_to "Back", :back %>

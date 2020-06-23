@@ -11,6 +11,10 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
   end
 
+  def edit
+    @story = Story.find(params[:id])
+  end
+
   def new
   end
 end
