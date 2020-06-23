@@ -2,7 +2,8 @@
   <div class='container'>
     <nav class="panel">
       <p class="panel-heading"> Story: <%= @story.name %> </p>
-        <div href="" class="panel-block flex flex-row justify-between">
+        <div href="" class="panel-block flex flex-col justify-between">
+        <div class="flex flex-row justify-between w-full">
             <div class="">
               <% case @story.status %>
               <% when "doing" %>
@@ -17,13 +18,17 @@
           <div class="buttons">
             <%= link_to "Edit", edit_sprint_story_path(@story.sprint, @story), class: "button is-primary is-small is-light" %>
             <%= link_to "Delete", sprint_story_path(@story.sprint, @story), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@story.name}?\"" }, class: "button is-danger is-small is-light" %>
-          </div></div>
-        <div href="" class="panel-block flex flex-row justify-between">
+          </div>
+          </div>
+        <div class="content w-full py-2">
         <% if @story.description %>
           <%= @story.description %>
         <% else %>
+          <p class="text-gray-600 italic">
           No description
+          </p>
         <% end %>
+        </div>
         </div>
     </nav>
     <%= link_to "< Back to sprint ("+@story.sprint.name+")", project_sprint_path(@story.sprint.project, @story.sprint), class: "button" %>
