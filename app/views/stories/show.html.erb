@@ -5,6 +5,7 @@
         <div href="" class="panel-block flex flex-col justify-between">
         <div class="flex flex-row justify-between w-full">
             <div class="">
+            <span class="tag">effort: <%= @story.effort %></span>
               <% case @story.status %>
               <% when "doing" %>
                 <span class="tag is-warning">doing</span>
