@@ -15,6 +15,17 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
   end
 
+  def update
+    @story = Story.find(params[:id])
+    @story.update(name: params[:story][:name], description: params[:story][:description], status: params[:story][:status], effort: params[:story][:effort])
+    if @story.errors.any?
+      render :edit
+    else
+      redirect_to sprint_story_path(@story.sprint, @story)
+    end
+  end
+
   def new
+    @story = Story.new
   end
 end

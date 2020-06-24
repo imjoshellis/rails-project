@@ -1,0 +1,5 @@
+<h2 class="title">Create New Story</h2>
+<%= render 'errors' %>
+<%= form_for(@story, url: story_path(@story), html: { method: :post }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>

@@ -22,7 +22,7 @@
           </div>
           </div>
         <div class="content w-full py-2">
-        <% if @story.description %>
+        <% if @story.description.length > 0 %>
           <%= @story.description %>
         <% else %>
           <p class="text-gray-600 italic">

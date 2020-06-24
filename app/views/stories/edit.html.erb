@@ -1,46 +1,5 @@
-
 <h2 class="title">Editing: <%= @story.name %></h2>
-
+<%= render 'errors' %>
 <%= form_for(@story, url: story_path(@story), html: { method: :patch }) do |f| %>
-  <div class="flex flex-row justify-between">
-  <div class="field flex-grow mr-4">
-    <div class="control">
-    <%= f.label :name, class: "label" %>
-    <%= f.text_field :name, class: "input" %>
-    </div>
-  </div>
-    <div class="field mr-4">
-      <div class="control">
-        <%= f.label :status, class: "label" %>
-        <div class="select">
-          <%= f.select :status, [['todo'],['doing'],['closed']] %>
-        </div>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.label :effort, class: "label" %>
-        <div class="select">
-          <%= f.select :effort, [10,9,8,7,6,5,4,3,2,1] %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="field">
-    <div class="control">
-    <%= f.label :description, class: "label" %>
-      <%= f.text_area :description, class: "textarea" %>
-    </div>
-  </div>
-
-
-  <div class="field">
-    <div class="is-grouped control">
-    <%= link_to "Cancel", :back, class: "button is-link is-outlined is-danger"  %>
-    <%= f.submit "Update", class: "button is-link" %>
-    </div>
-  </div>
+<%= render partial: 'form', locals: {f: f} %>
 <% end %>
-
