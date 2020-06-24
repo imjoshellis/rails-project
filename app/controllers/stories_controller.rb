@@ -18,6 +18,7 @@ class StoriesController < ApplicationController
 
   def update
     @story = Story.find(params[:id])
+    @sprint = Sprint.find(params[:sprint_id])
     @story.update(name: params[:story][:name], description: params[:story][:description], status: params[:story][:status], effort: params[:story][:effort])
     if @story.errors.any?
       render :edit
