@@ -1,0 +1,5 @@
+<h2 class="title">Create New Sprint</h2>
+<%= render partial: 'errors', locals: {object: @sprint} %>
+<%= form_for(@sprint, html: { method: :post }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>
