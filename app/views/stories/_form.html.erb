@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field mr-4">
       <div class="control">
         <%= f.label :effort, class: "label" %>
         <div class="select">
@@ -23,8 +23,17 @@
         </div>
       </div>
     </div>
+    
+    <div class="field">
+      <div class="control">
+        <%= f.label :goal, class: "label" %>
+        <div class="select">
+          <%= f.select :goal, [@sprint.goals.collect{|g| g.name}] %>
+        </div>
+      </div>
+    </div>
   </div>
-
+  
   <div class="field">
     <div class="control">
     <%= f.label :description, class: "label" %>
@@ -35,6 +44,6 @@
   <div class="field">
     <div class="is-grouped control">
     <%= link_to "Cancel", :back, class: "button is-link is-outlined is-danger"  %>
-    <%= f.submit "Update", class: "button is-link" %>
+    <%= f.submit "Save", class: "button is-link" %>
     </div>
   </div>

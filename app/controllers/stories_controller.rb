@@ -13,6 +13,7 @@ class StoriesController < ApplicationController
 
   def edit
     @story = Story.find(params[:id])
+    @sprint = Sprint.find(params[:sprint_id])
   end
 
   def update
@@ -27,5 +28,24 @@ class StoriesController < ApplicationController
 
   def new
     @story = Story.new
+    @sprint = Sprint.find(params[:sprint_id])
+  end
+
+  def create
+    @story = Story.new
+    @sprint = Sprint.find(params[:sprint_id])
+    goal = Goal.find_by(name: params[:story][:goal])
+    @story.update(name: params[:story][:name], description: params[:story][:description], status: params[:story][:status], effort: params[:story][:effort], sprint_id: params[:sprint_id], goal: goal)
+    if @story.errors.any?
+      render :new
+    else
+      redirect_to sprint_story_path(@story.sprint, @story)
+    end
+  end
+
+  def destroy
+    Story.find(params[:id]).destroy
+    @sprint = Sprint.find(params[:sprint_id])
+    redirect_to project_sprint_path(@sprint.project, @sprint)
   end
 end
