@@ -45,8 +45,9 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    Story.find(params[:id]).destroy
-    @sprint = Sprint.find(params[:sprint_id])
+    @story = Story.find(params[:id])
+    @sprint = @story.sprint
+    @story.destroy
     redirect_to project_sprint_path(@sprint.project, @sprint)
   end
 end
