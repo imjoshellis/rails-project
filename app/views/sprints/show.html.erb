@@ -1,6 +1,10 @@
 <section class='section'>
   <div class='container'>
     <h2 class="title"> Sprint: <%= @sprint.name %> </h2>
+    <div class="buttons">
+      <%= link_to "Edit", edit_project_sprint_path(@sprint.project, @sprint), class: "button is-primary" %>
+      <%= link_to "Delete", sprint_path(@sprint), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@sprint.name}?\"" }, class: "button is-danger" %>
+    </div>
     <nav class="panel">
       <p class="panel-heading"> Stories </p>
         <% if @sprint.stories.any? %>
@@ -76,10 +80,6 @@
       </nav>
       </div>
     </div> 
-    <div class="buttons">
       <%= link_to "< Back to project", project_path(@sprint.project), class: "button" %>
-      <%= link_to "Edit", edit_project_sprint_path(@sprint.project, @sprint), class: "button is-success" %>
-      <%= link_to "Delete", sprint_path(@sprint), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@sprint.name}?\"" }, class: "button is-danger" %>
-    </div>
   </div>
 </section>
