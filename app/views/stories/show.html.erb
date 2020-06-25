@@ -1,7 +1,12 @@
 <section class='section'>
   <div class='container'>
+    <h2 class="title"> Story: <%= @story.name %> </h2>
+    <div class="buttons">
+      <%= link_to "Edit", edit_sprint_story_path(@story.sprint, @story), class: "button is-primary" %>
+      <%= link_to "Delete", sprint_story_path(@story.sprint, @story), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@story.name}?\"" }, class: "button is-danger" %>
+    </div>
     <nav class="panel">
-      <p class="panel-heading"> Story: <%= @story.name %> </p>
+      <p class="panel-heading"> Description </p>
         <div href="" class="panel-block flex flex-col justify-between">
         <div class="flex flex-row justify-between w-full">
             <div class="">
@@ -16,10 +21,6 @@
               <% end %> 
             </div>
             
-          <div class="buttons">
-            <%= link_to "Edit", edit_sprint_story_path(@story.sprint, @story), class: "button is-primary is-small is-light" %>
-            <%= link_to "Delete", sprint_story_path(@story.sprint, @story), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@story.name}?\"" }, class: "button is-danger is-small is-light" %>
-          </div>
           </div>
         <div class="content w-full py-2">
         <% if @story.description.length > 0 %>
