@@ -7,7 +7,15 @@
     </div>
       <nav class="panel">
         <p class="panel-heading"> Description </p>
-        <div class="panel-block text-red-500 font-bold">
+        <%= link_to "Project: #{@goal.project.name}", project_path(@goal.project), class: "panel-block" %>
+        <% if @goal.sprint %>
+          <%= link_to "Sprint: #{@goal.sprint.name}", sprint_path(@goal.sprint), class: "panel-block" %>
+        <% else %>
+          <div class="panel-block text-red-500 font-bold">
+            No associated sprint
+          </div>
+        <% end %>
+        <div class="panel-block">
           <div class="content w-full py-2">
             <% if @goal.description %>
               <%= @goal.description %>
@@ -18,13 +26,6 @@
           <% end %>
           </div>
         </div>
-        <% if @goal.sprint %>
-          <%= link_to "Sprint: #{@goal.sprint.name}", sprint_path(@goal.sprint), class: "panel-block" %>
-        <% else %>
-          <div class="panel-block text-red-500 font-bold">
-            No associated sprint
-          </div>
-        <% end %>
       </nav>
       <%= link_to "< Back to project", project_path(@goal.project), class: "button" %>
   </div>

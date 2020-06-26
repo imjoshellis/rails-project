@@ -22,13 +22,14 @@ class GoalsController < ApplicationController
   end
 
   def update
-    @sprint = Sprint.find(params[:id])
+    @goal = Goal.find(params[:id])
+    @sprint = Sprint.find(params[:goal][:sprint_id])
     @project = @sprint.project
-    @sprint.update(name: params[:sprint][:name], project_id: @project.id, start_date: params[:sprint][:start_date], end_date: params[:sprint][:end_date])
-    if @sprint.errors.any?
+    @goal.update(name: params[:goal][:name], project_id: @project.id, sprint_id: @sprint.id, description: params[:goal][:description])
+    if @goal.errors.any?
       render :edit
     else
-      redirect_to project_sprint_path(@project, @sprint)
+      redirect_to project_goal_path(@project, @goal)
     end
   end
 end
