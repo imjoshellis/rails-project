@@ -1,0 +1,5 @@
+<h2 class="title">Create New Story</h2>
+<%= render partial: 'errors', locals: {object: @story} %>
+<%= form_for(@story, url: sprint_stories_path(@sprint, @story), html: { method: :post }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>

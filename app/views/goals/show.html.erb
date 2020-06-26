@@ -1,0 +1,31 @@
+<section class='section'>
+  <div class='container'>
+    <h2 class="title"> Goal: <%= @goal.name %> </h2>
+    <div class="buttons">
+      <%= link_to "Edit", edit_project_goal_path(@goal.project, @goal), class: "button is-primary" %>
+      <%= link_to "Delete", goal_path(@goal), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@goal.name}?\"" }, class: "button is-danger" %>
+    </div>
+      <nav class="panel">
+        <p class="panel-heading"> Description </p>
+        <div class="panel-block text-red-500 font-bold">
+          <div class="content w-full py-2">
+            <% if @goal.description %>
+              <%= @goal.description %>
+            <% else %>
+            <p class="text-gray-600 italic">
+              No description
+            </p>
+          <% end %>
+          </div>
+        </div>
+        <% if @goal.sprint %>
+          <%= link_to "Sprint: #{@goal.sprint.name}", sprint_path(@goal.sprint), class: "panel-block" %>
+        <% else %>
+          <div class="panel-block text-red-500 font-bold">
+            No associated sprint
+          </div>
+        <% end %>
+      </nav>
+      <%= link_to "< Back to project", project_path(@goal.project), class: "button" %>
+  </div>
+</section>
