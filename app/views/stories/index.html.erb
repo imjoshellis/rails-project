@@ -1,0 +1,39 @@
+<section class="section">
+  <div class="container">
+    <div class="buttons">
+      <%= link_to "All", stories_path, class: "button is-small "+story_filter(stories_path, request.path) %>
+      <%= link_to "Todo", todo_path, class: "button is-small "+story_filter(todo_path, request.path) %>
+      <%= link_to "Doing", doing_path, class: "button is-small "+story_filter(doing_path, request.path) %>
+      <%= link_to "Closed", closed_path, class: "button is-small "+story_filter(closed_path, request.path) %>
+    </div>
+    <nav class="panel">
+      <p class="panel-heading">
+        Stories
+      </p>
+    <% @stories.each do |s| %>
+      <a href="<%= sprint_story_path(s.sprint, s) %>" class="is-active">
+        <div href="" class="panel-block flex flex-row justify-between">
+          <div class="">
+            <%= s.name %>&nbsp;
+            <span class="tag">effort: <%= s.effort %></span>&nbsp;
+            <% case s.status %>
+            <% when "doing" %>
+              <span class="tag is-warning">doing</span>
+            <% when "closed" %>
+              <span class="tag is-success">closed</span>
+            <% when "todo" %>
+              <span class="tag is-danger">todo</span>
+            <% end %> 
+          </div>
+          <div class="buttons">
+            <%= link_to "View", sprint_story_path(s.sprint, s), class: "button is-small is-light" %>
+            <%= link_to "Edit", edit_sprint_story_path(s.sprint, s), class: "button is-primary is-small is-light" %>
+            <%= link_to "Delete", sprint_story_path(s.sprint, s), method: :delete, data: { confirm: "Are you sure you want to delete \"#{s.name}?\"" }, class: "button is-danger is-small is-light" %>
+          </div>
+        </div>
+      </a>
+    <% end %>
+    <%= link_to "+ New Story", new_story_path, class: "panel-block is-active" %>
+    </nav>
+  </div>
+</section>

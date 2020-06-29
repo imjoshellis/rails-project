@@ -12,5 +12,8 @@ Rails.application.routes.draw do
     resources :goals
     resources :sprints
   end
+  get "todo", to: "stories#todo"
+  get "doing", to: "stories#doing"
+  get "closed", to: "stories#closed"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

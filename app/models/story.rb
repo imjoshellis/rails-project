@@ -6,4 +6,8 @@ class Story < ApplicationRecord
   validates :description, length: {maximum: 600}
   validates :status, inclusion: {in: %w[todo doing closed], message: "%{value} is not a valid status"}
   validates :effort, inclusion: 1..10
+
+  scope :todo, -> { where(status: "todo") }
+  scope :doing, -> { where(status: "doing") }
+  scope :closed, -> { where(status: "closed") }
 end
