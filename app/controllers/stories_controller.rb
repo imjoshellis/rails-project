@@ -7,6 +7,21 @@ class StoriesController < ApplicationController
     end
   end
 
+  def todo
+    @stories = Story.todo
+    render :index
+  end
+
+  def doing
+    @stories = Story.doing
+    render :index
+  end
+
+  def closed
+    @stories = Story.closed
+    render :index
+  end
+
   def show
     @story = Story.find(params[:id])
   end

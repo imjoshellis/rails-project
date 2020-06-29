@@ -6,6 +6,8 @@ class Goal < ApplicationRecord
   validates :name, presence: true, length: {in: 6..20}
   validates :description, length: {maximum: 600}
 
+  scope :no_sprint, -> { where(sprint: nil) }
+
   def project_name
     project.name
   end
