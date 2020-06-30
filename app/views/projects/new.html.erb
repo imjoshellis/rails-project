@@ -1,0 +1,5 @@
+<h2 class="title">Create New Project</h2>
+<%= render partial: 'errors', locals: {object: @project} %>
+<%= form_for(@project, html: { method: :post }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>
