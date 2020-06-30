@@ -1,6 +1,5 @@
 # Simple Stories
 
----
 A Ruby on Rails project built for Flatiron School by @imjoshellis
 
 ## About
