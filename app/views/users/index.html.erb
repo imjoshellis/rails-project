@@ -1,0 +1,12 @@
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Users
+      </p>
+     <% @users.each do |u| %>
+      <%= link_to u.name, user_path(u), class: "panel-block is-active" %>
+      <% end %>
+    </nav>
+  </div>
+</section>
