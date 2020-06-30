@@ -10,6 +10,12 @@ Each sprint can have multiple goals and stories along with a start and end date.
 
 The reason I chose to build a project management app is becuase I wanted to build something compareable to real world products.
 
+## Demo
+
+There is no live version of this currently, but here is a video walking through the product:
+
+If you'd like to demo the product, you can clone the repository, then run `bundle` to install gems, `rake db:migrate` to set up the database, `rake db:seed` (optional) if you want to seed the db with data, and `rails s` to start the server.
+
 ## License
 
 If you stumble upon this code and find all or some of it useful, feel free to do what you wish with it, other than pretending you built it yourself. :)
