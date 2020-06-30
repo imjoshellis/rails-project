@@ -4,7 +4,7 @@
     <h3 class="subtitle"> Role: <%= @user.role.name %> </h3>
     <div class="buttons">
       <%= link_to "Edit", edit_user_path(@user), class: "button is-primary" %>
-      <%= link_to "Delete", sprint_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@user.name}?\"" }, class: "button is-danger" %>
+      <%= link_to "Delete", user_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@user.name}?\"" }, class: "button is-danger" %>
     </div>
     <nav class="panel">
       <div class="panel-heading">
@@ -32,5 +32,6 @@
         </div>
       <% end %>
     </nav>
+      <%= link_to "All Users", users_path, class: "button" %>
   </div>
 </section>

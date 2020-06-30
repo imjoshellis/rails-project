@@ -1,0 +1,5 @@
+<h2 class="title">Editing: @user.name</h2>
+<%= render partial: 'errors', locals: {object: @user} %>
+<%= form_for(@user, html: { method: :patch }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>
