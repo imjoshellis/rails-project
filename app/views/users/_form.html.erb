@@ -6,7 +6,7 @@
 </div>
 <div class="field">
   <div class="control">
-  <%= f.label :projects, class: "checkbox" %>
+  <%= f.label :projects, class: "label" %>
   <% Project.all.each do |p| %>
     <div class="control">
     <% if @user.projects.include?(p) %>
