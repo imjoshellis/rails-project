@@ -1,0 +1,5 @@
+<h2 class="title">Editing: @project.name</h2>
+<%= render partial: 'errors', locals: {object: @project} %>
+<%= form_for(@project, html: { method: :patch }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>

@@ -1,0 +1,33 @@
+<div class="field">
+  <div class="control">
+  <%= f.label :name, class: "label" %>
+  <%= f.text_field :name, class: "input" %>
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+  <%= f.label :description, class: "label" %>
+  <%= f.text_area :description, class: "textarea" %>
+  </div>
+</div>
+<div class="field">
+  <div class="control">
+  <%= f.label :users, class: "checkbox" %>
+  <% User.all.each do |u| %>
+    <div class="control">
+    <% if @project.users.include?(u) %>
+      <%= f.check_box :users, { :multiple => true, :checked => true }, u.id, false %> <%= u.name %>
+    <% else %>
+      <%= f.check_box :users, { :multiple => true }, u.id, false %> <%= u.name %>
+    <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="is-grouped control">
+  <%= link_to "Cancel", :back, class: "button is-link is-outlined is-danger"  %>
+  <%= f.submit "Save", class: "button is-link" %>
+  </div>
+</div>
