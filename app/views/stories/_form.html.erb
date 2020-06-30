@@ -28,7 +28,7 @@
       <div class="control">
         <%= f.label :goal, class: "label" %>
         <div class="select">
-          <%= f.select :goal, [@sprint.goals.collect{|g| g.name}] %>
+          <%= f.select :goal, @sprint.goals.collect{|g| g.name} %>
         </div>
       </div>
     </div>

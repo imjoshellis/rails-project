@@ -10,7 +10,7 @@
       <div class="control">
         <%= f.label :sprint, class: "label" %>
         <div class="select">
-          <%= f.select :sprint_id, Sprint.all.collect{|s| [s.project.name + ": " + s.name, s.id]} %>
+          <%= f.select :sprint_id, Sprint.all.collect{|s| [s.project.name + ": " + s.name, s.id]}, { include_blank: true } %>
         </div>
       </div>
     </div>

@@ -12,7 +12,7 @@
 </div>
 <div class="field">
   <div class="control">
-  <%= f.label :users, class: "checkbox" %>
+  <%= f.label :users, class: "label" %>
   <% User.all.each do |u| %>
     <div class="control">
     <% if @project.users.include?(u) %>

@@ -14,6 +14,7 @@ class SprintsController < ApplicationController
   def edit
     @sprint = Sprint.find(params[:id])
     @project = Project.find(params[:project_id]) if params[:project_id]
+    @goals = @project.goals
   end
 
   def update
@@ -29,6 +30,7 @@ class SprintsController < ApplicationController
 
   def new
     @sprint = Sprint.new
+    @goals = Goal.all
   end
 
   def create
