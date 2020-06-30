@@ -1,24 +1,16 @@
-# README
+# Simple Stories
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
+A Ruby on Rails project built for Flatiron School by @imjoshellis
 
-Things you may want to cover:
+## About
 
-* Ruby version
+Simple Stories is an app for basic project management using Agile methodology. You can have multiple projects, each with their own goals and sprints.
 
-* System dependencies
+Each sprint can have multiple goals and stories along with a start and end date. Stories can be categorized by their status, whether todo, doing, or closed.
 
-* Configuration
+The reason I chose to build a project management app is becuase I wanted to build something compareable to real world products.
 
-* Database creation
+## License
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you stumble upon this code and find all or some of it useful, feel free to do what you wish with it, other than pretending you built it yourself. :)
