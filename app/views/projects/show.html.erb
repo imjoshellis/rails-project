@@ -7,10 +7,33 @@
       <%= link_to "Edit", edit_project_path(@project), class: "button is-primary" %>
       <%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@project.name}?\"" }, class: "button is-danger" %>
     </div>
-        <nav class="panel">
+      <div class="columns">
+      <div class="column is-6">
+        <nav class="panel h-full">
           <p class="panel-heading"> Description </p>
           <p class="panel-block"> <%= @project.description %> </p>
         </nav>
+        </div>
+        <div class="column is-6">
+          <nav class="panel">
+            <p class="panel-heading">
+            Users
+            </p>
+            <% @project.users.uniq.each do |u| %>
+              <a href="<%= user_path(u) %>" class="is-active">
+                <div href="" class="panel-block flex flex-row justify-between">
+                  <div class="">
+                    <%= u.name %>&nbsp;
+                  </div>
+                  <div class="buttons">
+                    <%= link_to "Edit", edit_user_path(u), class: "button is-primary is-small is-light" %>
+                  </div>
+                </div>
+              </a>
+            <% end %>
+          </nav>
+        </div>
+        </div>
       <div class="columns">
         <div class="column is-6">
           <nav class="panel">
