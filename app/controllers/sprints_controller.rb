@@ -20,7 +20,7 @@ class SprintsController < ApplicationController
   def update
     @sprint = Sprint.find(params[:id])
     @project = @sprint.project
-    @sprint.update(name: params[:sprint][:name], project_id: @project.id, start_date: params[:sprint][:start_date], end_date: params[:sprint][:end_date])
+    @sprint.update(name: params[:sprint][:name], project_id: @project.id, start_date: params[:sprint][:start_date], end_date: params[:sprint][:end_date], goal_ids: params[:sprint][:goal_ids])
     if @sprint.errors.any?
       render :edit
     else
@@ -37,6 +37,11 @@ class SprintsController < ApplicationController
     @sprint = Sprint.new
     @project = Project.find_by(name: params[:sprint][:project])
     @sprint.update(name: params[:sprint][:name], project_id: @project.id, start_date: params[:sprint][:start_date], end_date: params[:sprint][:end_date])
+    @sprint.goals.clear
+    params[:sprint][:goals].each do |i|
+      @sprint.goals << Goal.find(i)
+    end
+    @sprint.save
     if @sprint.errors.any?
       render :new
     else

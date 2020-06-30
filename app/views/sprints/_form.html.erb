@@ -32,13 +32,13 @@
   </div>
 <div class="field">
   <div class="control">
-  <%= f.label :goals, class: "label" %>
+  <%= f.label :goal_ids, class: "label" %>
   <% @goals.each do |g| %>
     <div class="control">
     <% if @sprint.goals.include?(g) %>
-      <%= f.check_box :goals, { :multiple => true, :checked => true }, g.id, false %> <%= g.name %>
+      <%= f.check_box :goal_ids, { :multiple => true, :checked => true }, g.id, false %> <%= g.name %>
     <% else %>
-      <%= f.check_box :goals, { :multiple => true }, g.id, false %> <%= g.name %>
+      <%= f.check_box :goal_ids, { :multiple => true }, g.id, false %> <%= g.name %>
     <% end %>
     </div>
   <% end %>

@@ -4,7 +4,7 @@ class Sprint < ApplicationRecord
   belongs_to :project
   has_many :users, through: :project
 
-  validates :name, presence: true, length: {in: 6..20}
+  validates :name, presence: true, length: {in: 6..40}
 
   def project_name
     project.name

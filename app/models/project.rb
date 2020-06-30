@@ -5,6 +5,6 @@ class Project < ApplicationRecord
   has_many :sprints
   has_many :stories, through: :sprints
 
-  validates :name, presence: true, length: {in: 6..20}
+  validates :name, presence: true, length: {in: 6..40}
   validates :description, length: {maximum: 600}
 end
