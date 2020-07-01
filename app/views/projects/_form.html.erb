@@ -16,7 +16,7 @@
   <% User.all.each do |u| %>
     <div class="control">
     <% if @project.users.include?(u) %>
-      <%= f.check_box :user_ids, { :multiple => true, :checked => true }, u.id, false %> <%= u.name %>
+      <%= f.check_box "Users", { :multiple => true, :checked => true }, u.id, false %> <%= u.name %>
     <% else %>
       <%= f.check_box :user_ids, { :multiple => true }, u.id, false %> <%= u.name %>
     <% end %>
