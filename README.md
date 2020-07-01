@@ -12,7 +12,7 @@ The reason I chose to build a project management app is becuase I wanted to buil
 
 ## Demo
 
-There is no live version of this currently, but here is a video walking through the product:
+There is no live version of this currently, but here is a video walking through the product: [Demo Video](https://www.loom.com/share/c66cacd021344463a63ae1c99df48fb9)
 
 If you'd like to demo the product, you can clone the repository, then run `bundle` to install gems, `rake db:migrate` to set up the database, `rake db:seed` (optional) if you want to seed the db with data, and `rails s` to start the server.
 
