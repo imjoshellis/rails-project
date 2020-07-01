@@ -19,16 +19,16 @@
       <div class="control">
         <%= f.label :effort, class: "label" %>
         <div class="select">
-          <%= f.select :effort, [10,9,8,7,6,5,4,3,2,1] %>
+          <%= f.select :effort, [10,9,8,7,6,5,4,3,2,1], {selected: "5"} %>
         </div>
       </div>
     </div>
     
     <div class="field">
       <div class="control">
-        <%= f.label :goal, class: "label" %>
+        <%= f.label :sprint_id, class: "label" %>
         <div class="select">
-          <%= f.select :goal, @sprint.goals.collect{|g| g.name} %>
+          <%= f.select :sprint_id, Sprint.all.collect{|s| [s.project.name + ": " + s.name, s.id]}, {selected: @sprint.id} %>
         </div>
       </div>
     </div>

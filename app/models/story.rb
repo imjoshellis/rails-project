@@ -1,6 +1,5 @@
 class Story < ApplicationRecord
-  belongs_to :sprint, optional: true
-  belongs_to :goal
+  belongs_to :sprint
 
   validates :name, presence: true, length: {in: 6..40}
   validates :description, length: {maximum: 600}
