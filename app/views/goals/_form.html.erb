@@ -10,7 +10,7 @@
       <div class="control">
         <%= f.label :project, class: "label" %>
         <div class="select">
-          <%= f.select :project_id, Project.all.collect{|p| [p.name, p.id]} %>
+          <%= f.select :project_id, Project.all.collect{|p| [p.name, p.id]}, {selected: @project.id} %>
         </div>
       </div>
   </div>
