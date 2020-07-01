@@ -13,11 +13,7 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    @project.update(name: params[:project][:name], description: params[:project][:name])
-    @project.users.clear
-    params[:project][:users].each do |i|
-      @project.users << User.find(i)
-    end
+    @project.update(project_params)
     @project.save
     if @project.errors.any?
       render :edit
@@ -32,7 +28,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new
-    @project.update(name: params[:project][:name], description: params[:project][:name])
+    @project.update(project_params)
     if @project.errors.any?
       render :new
     else
@@ -44,5 +40,11 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
     redirect_to projects_path
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:name, :description, user_ids: [])
   end
 end
