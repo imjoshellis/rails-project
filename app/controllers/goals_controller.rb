@@ -11,24 +11,21 @@ class GoalsController < ApplicationController
     @goal = Goal.find(params[:id])
   end
 
-  def no_sprint
-    @goals = Goal.no_sprint
-  end
-
   def edit
     @goal = Goal.find(params[:id])
-
     @sprints = if params[:project_id]
       Project.find(params[:project_id]).sprints
     else
       Sprint.all
     end
+    @project = @goal.project
   end
 
   def update
     @goal = Goal.find(params[:id])
     @goal.update(goal_params)
     if @goal.errors.any?
+      @project = @goal.project
       render :edit
     else
       redirect_to project_goal_path(@goal.project, @goal)
@@ -37,12 +34,14 @@ class GoalsController < ApplicationController
 
   def new
     @goal = Goal.new
+    set_project_variable
   end
 
   def create
     @goal = Goal.new
     @goal.update(goal_params)
     if @goal.errors.any?
+      set_project_variable
       render :new
     else
       redirect_to project_goal_path(@goal.project, @goal)
