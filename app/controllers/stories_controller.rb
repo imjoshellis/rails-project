@@ -1,9 +1,10 @@
 class StoriesController < ApplicationController
   def index
-    @stories = if params[:sprint_id]
-      Sprint.find(params[:sprint_id]).stories
+    if params[:sprint_id]
+      @sprint = Sprint.find(params[:sprint_id])
+      @stories = @sprint.stories
     else
-      Story.all
+      @stories = Story.all
     end
   end
 
@@ -12,7 +13,7 @@ class StoriesController < ApplicationController
       @sprint = Sprint.find(params[:sprint_id])
       @stories = @sprint.stories.todo
     else
-      Story.all.todo
+      @stories = Story.all.todo
     end
     render :index
   end
@@ -22,7 +23,7 @@ class StoriesController < ApplicationController
       @sprint = Sprint.find(params[:sprint_id])
       @stories = @sprint.stories.doing
     else
-      Story.all.doing
+      @stories = Story.all.doing
     end
     render :index
   end
@@ -32,7 +33,7 @@ class StoriesController < ApplicationController
       @sprint = Sprint.find(params[:sprint_id])
       @stories = @sprint.stories.closed
     else
-      Story.all.closed
+      @stories = Story.all.closed
     end
     render :index
   end

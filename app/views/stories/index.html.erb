@@ -1,11 +1,6 @@
 <section class="section">
   <div class="container">
-    <div class="buttons">
-      <%= link_to "All", stories_path, class: "button is-small "+story_filter(stories_path, request.path) %>
-      <%= link_to "Todo", todo_path, class: "button is-small "+story_filter(todo_path, request.path) %>
-      <%= link_to "Doing", doing_path, class: "button is-small "+story_filter(doing_path, request.path) %>
-      <%= link_to "Closed", closed_path, class: "button is-small "+story_filter(closed_path, request.path) %>
-    </div>
+    <%= render partial: 'filterbtns' %>
     <nav class="panel">
       <p class="panel-heading">
         Stories
@@ -35,5 +30,8 @@
     <% end %>
     <%= link_to "+ New Story", new_story_path, class: "panel-block is-size-7 has-text-weight-bold" %>
     </nav>
+    <% if @sprint %>
+      <%= link_to "< Back to sprint (#{@sprint.name})", project_sprint_path(@sprint.project, @sprint), class: "button" %>
+    <% end %>
   </div>
 </section>

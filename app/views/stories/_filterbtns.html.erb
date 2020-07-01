@@ -1,0 +1,14 @@
+  <div class="buttons">
+  <div class="mr-2">Filter stories: </div>
+  <% if @sprint %>
+    <%= link_to "All", sprint_stories_path(@sprint), class: "button is-small "+story_filter(sprint_stories_path(@sprint), request.path) %>
+    <%= link_to "Todo", sprint_todo_path(@sprint), class: "button is-small "+story_filter(sprint_todo_path(@sprint), request.path) %>
+    <%= link_to "Doing", sprint_doing_path(@sprint), class: "button is-small "+story_filter(sprint_doing_path(@sprint), request.path) %>
+    <%= link_to "Closed", sprint_closed_path(@sprint), class: "button is-small "+story_filter(sprint_closed_path(@sprint), request.path) %>
+  <% else %>
+    <%= link_to "All", stories_path, class: "button is-small "+story_filter(stories_path, request.path) %>
+    <%= link_to "Todo", todo_path, class: "button is-small "+story_filter(todo_path, request.path) %>
+    <%= link_to "Doing", doing_path, class: "button is-small "+story_filter(doing_path, request.path) %>
+    <%= link_to "Closed", closed_path, class: "button is-small "+story_filter(closed_path, request.path) %>
+  <% end %>
+  </div>
