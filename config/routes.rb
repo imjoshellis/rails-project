@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :stories
   resources :sprints do
     resources :stories
+    get "todo", to: "stories#todo"
+    get "doing", to: "stories#doing"
+    get "closed", to: "stories#closed"
   end
   resources :goals
   resources :projects do
