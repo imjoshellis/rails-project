@@ -8,17 +8,32 @@ class StoriesController < ApplicationController
   end
 
   def todo
-    @stories = Story.todo
+    if params[:sprint_id]
+      @sprint = Sprint.find(params[:sprint_id])
+      @stories = @sprint.stories.todo
+    else
+      Story.all.todo
+    end
     render :index
   end
 
   def doing
-    @stories = Story.doing
+    if params[:sprint_id]
+      @sprint = Sprint.find(params[:sprint_id])
+      @stories = @sprint.stories.doing
+    else
+      Story.all.doing
+    end
     render :index
   end
 
   def closed
-    @stories = Story.closed
+    if params[:sprint_id]
+      @sprint = Sprint.find(params[:sprint_id])
+      @stories = @sprint.stories.closed
+    else
+      Story.all.closed
+    end
     render :index
   end
 
