@@ -5,15 +5,19 @@
   <%= link_to menu_project_name(1, 1, p.name), project_path(p), class: menu_link_class(project_path(p), request.path) %>
   <%= link_to "Sprints", project_sprints_path(p), class: "menu-label "+menu_link_class(project_sprints_path(p), request.path) %>
     <ul class="menu-list">
-      <% p.sprints.each do |s| %>
-        <li><%= link_to s.name, project_sprint_path(p, s), class: menu_link_class(current_sprint, s) %> </li>
-      <% end %>
+        <% p.sprints.each do |s| %>
+          <li><%= link_to s.name, project_sprint_path(p, s), class: menu_link_class(current_sprint, s) %> </li>
+        <% end %>
+        <li>
+          <%= link_to "+ New Sprint", new_project_sprint_path(p), class: "is-size-7 has-text-weight-bold" %>
+        </li>
     </ul>
   <%= link_to "Goals", project_goals_path(p), class: "menu-label "+menu_link_class(project_goals_path(p), request.path) %>
     <ul class="menu-list">
-      <% p.goals.each do |g| %>
-        <li><%= link_to g.name, project_goal_path(p, g), class: menu_link_class(current_goal, g) %> </li>
-      <% end %>
+        <% p.goals.each do |g| %>
+          <li><%= link_to g.name, project_goal_path(p, g), class: menu_link_class(current_goal, g) %> </li>
+        <% end %>
+        <li><%= link_to "+ New Goal", new_project_goal_path(p), class: "is-size-7 has-text-weight-bold" %></li>
     </ul>
     <% else %>
   <%= link_to menu_project_name(1, 0, p.name), project_path(p), class: menu_link_class(project_path(p), request.path) %>
