@@ -7,9 +7,9 @@
   </div>
   <div class="field mr-4">
     <div class="control">
-      <%= f.label :project, class: "label" %>
+      <%= f.label :project_id, class: "label" %>
       <div class="select">
-        <%= f.select :project, Project.all.collect{|p| p.name} %>
+        <%= f.select :project_id, Project.all.collect{|p| [p.name, p.id]} %>
       </div>
     </div>
   </div>

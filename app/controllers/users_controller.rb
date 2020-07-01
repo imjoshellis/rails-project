@@ -13,12 +13,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(name: params[:user][:name], role: params[:user][:role])
-    @user.projects.clear
-    params[:user][:projects].each do |i|
-      @user.projects << Project.find(i)
-    end
-    @user.save
+    @user.update(user_params)
     if @user.errors.any?
       render :edit
     else
@@ -30,5 +25,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
     redirect_to users_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :role, project_ids: [])
   end
 end

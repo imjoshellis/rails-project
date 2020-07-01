@@ -13,14 +13,14 @@ class SprintsController < ApplicationController
 
   def edit
     @sprint = Sprint.find(params[:id])
-    @project = Project.find(params[:project_id]) if params[:project_id]
+    @project = @sprint.project
     @goals = @project.goals
   end
 
   def update
     @sprint = Sprint.find(params[:id])
     @project = @sprint.project
-    @sprint.update(name: params[:sprint][:name], project_id: @project.id, start_date: params[:sprint][:start_date], end_date: params[:sprint][:end_date], goal_ids: params[:sprint][:goal_ids])
+    @sprint.update(sprint_params)
     if @sprint.errors.any?
       render :edit
     else
@@ -35,17 +35,12 @@ class SprintsController < ApplicationController
 
   def create
     @sprint = Sprint.new
-    @project = Project.find_by(name: params[:sprint][:project])
-    @sprint.update(name: params[:sprint][:name], project_id: @project.id, start_date: params[:sprint][:start_date], end_date: params[:sprint][:end_date])
-    @sprint.goals.clear
-    params[:sprint][:goals].each do |i|
-      @sprint.goals << Goal.find(i)
-    end
-    @sprint.save
+    @goals = Goal.all
+    @sprint.update(sprint_params)
     if @sprint.errors.any?
       render :new
     else
-      redirect_to project_sprint_path(@project, @sprint)
+      redirect_to project_sprint_path(@sprint.project, @sprint)
     end
   end
 
@@ -54,5 +49,11 @@ class SprintsController < ApplicationController
     @project = @sprint.project
     @sprint.destroy
     redirect_to project_path(@project)
+  end
+
+  private
+
+  def sprint_params
+    params.require(:sprint).permit(:name, :project_id, :start_date, :end_date, goal_ids: [])
   end
 end

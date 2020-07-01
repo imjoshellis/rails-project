@@ -33,8 +33,7 @@ class StoriesController < ApplicationController
 
   def update
     @story = Story.find(params[:id])
-    @sprint = Sprint.find(params[:sprint_id])
-    @story.update(name: params[:story][:name], description: params[:story][:description], status: params[:story][:status], effort: params[:story][:effort])
+    @story.update(story_params)
     if @story.errors.any?
       render :edit
     else
@@ -49,9 +48,8 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.new
-    @sprint = Sprint.find(params[:sprint_id])
-    goal = Goal.find_by(name: params[:story][:goal])
-    @story.update(name: params[:story][:name], description: params[:story][:description], status: params[:story][:status], effort: params[:story][:effort], sprint_id: params[:sprint_id], goal: goal)
+    @sprint = Sprint.find(params[:story][:sprint_id])
+    @story.update(story_params)
     if @story.errors.any?
       render :new
     else
@@ -64,5 +62,11 @@ class StoriesController < ApplicationController
     @sprint = @story.sprint
     @story.destroy
     redirect_to project_sprint_path(@sprint.project, @sprint)
+  end
+
+  private
+
+  def story_params
+    params.require(:story).permit(:name, :description, :status, :effort, :sprint_id)
   end
 end

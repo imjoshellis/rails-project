@@ -6,13 +6,13 @@
 </div>
 <div class="field">
   <div class="control">
-  <%= f.label :projects, class: "label" %>
+  <%= f.label :project_ids, class: "label" %>
   <% Project.all.each do |p| %>
     <div class="control">
     <% if @user.projects.include?(p) %>
-      <%= f.check_box :projects, { :multiple => true, :checked => true }, p.id, false %> <%= p.name %>
+      <%= f.check_box :project_ids, { :multiple => true, :checked => true }, p.id, false %> <%= p.name %>
     <% else %>
-      <%= f.check_box :projects, { :multiple => true }, p.id, false %> <%= p.name %>
+      <%= f.check_box :project_ids, { :multiple => true }, p.id, false %> <%= p.name %>
     <% end %>
     </div>
   <% end %>
