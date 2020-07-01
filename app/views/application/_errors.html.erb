@@ -1,14 +1,16 @@
-<% if object.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= pluralize(object.errors.count, "error") %>
-      prohibited this from being saved:
-    </h2>
- 
-    <ul>
-    <% object.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <% if object.errors.any? %>
+    <div class="notification is-warning">
+      <div class="content" id="error_explanation">
+        <h4>
+          <%= pluralize(object.errors.count, "error") %>
+          prohibited this from being saved:
+        </h4>
+     
+        <ul>
+        <% object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
     <% end %>
-    </ul>
-  </div>
-<% end %>
