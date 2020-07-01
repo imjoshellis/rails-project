@@ -9,7 +9,7 @@
     <div class="control">
       <%= f.label :project_id, class: "label" %>
       <div class="select">
-        <%= f.select :project_id, Project.all.collect{|p| [p.name, p.id]} %>
+        <%= f.select :project_id, Project.all.collect{|p| [p.name, p.id]}, {selected: @project.id} %>
       </div>
     </div>
   </div>
@@ -32,15 +32,22 @@
   </div>
 <div class="field">
   <div class="control">
-  <%= f.label :goal_ids, class: "label" %>
-  <% @goals.each do |g| %>
-    <div class="control">
-    <% if @sprint.goals.include?(g) %>
-      <%= f.check_box :goal_ids, { :multiple => true, :checked => true }, g.id, false %> <%= g.name %>
-    <% else %>
-      <%= f.check_box :goal_ids, { :multiple => true }, g.id, false %> <%= g.name %>
+  <%= f.label "Goals", class: "label" %>
+  <% @projects.each do |p| %>
+  <div class="content">
+  <h6><%= p.name %></h6>
+    <ul>
+    <% p.goals.each do |g| %>
+      <div class="control">
+      <% if @sprint.goals.include?(g) %>
+        <%= f.check_box :goal_ids, { :multiple => true, :checked => true }, g.id, false %> <%= g.name %>
+      <% else %>
+        <%= f.check_box :goal_ids, { :multiple => true }, g.id, false %> <%= g.name %>
+      <% end %>
+      </div>
     <% end %>
-    </div>
+    </ul>
+  </div>
   <% end %>
   </div>
 </div>
