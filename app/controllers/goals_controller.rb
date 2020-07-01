@@ -27,13 +27,11 @@ class GoalsController < ApplicationController
 
   def update
     @goal = Goal.find(params[:id])
-    @sprint = Sprint.find(params[:goal][:sprint_id])
-    @project = @sprint.project
-    @goal.update(name: params[:goal][:name], project_id: @project.id, sprint_id: @sprint.id, description: params[:goal][:description])
+    @goal.update(goal_params)
     if @goal.errors.any?
       render :edit
     else
-      redirect_to project_goal_path(@project, @goal)
+      redirect_to project_goal_path(@goal.project, @goal)
     end
   end
 
@@ -43,13 +41,11 @@ class GoalsController < ApplicationController
 
   def create
     @goal = Goal.new
-    @sprint = Sprint.find(params[:goal][:sprint_id])
-    @project = @sprint.project
-    @goal.update(name: params[:goal][:name], project_id: @project.id, sprint_id: @sprint.id, description: params[:goal][:description])
+    @goal.update(goal_params)
     if @goal.errors.any?
       render :new
     else
-      redirect_to project_goal_path(@project, @goal)
+      redirect_to project_goal_path(@goal.project, @goal)
     end
   end
 
@@ -58,5 +54,11 @@ class GoalsController < ApplicationController
     @project = @goal.project
     @goal.destroy
     redirect_to project_path(@project)
+  end
+
+  private
+
+  def goal_params
+    params.require(:goal).permit(:name, :project_id, :sprint_id, :description)
   end
 end
