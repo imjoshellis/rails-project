@@ -14,14 +14,18 @@ class SprintsController < ApplicationController
   def edit
     @sprint = Sprint.find(params[:id])
     @project = @sprint.project
+    @projects = Project.all
     @goals = @project.goals
   end
 
   def update
     @sprint = Sprint.find(params[:id])
     @project = @sprint.project
+    @sprint.goals.clear
     @sprint.update(sprint_params)
     if @sprint.errors.any?
+      @goals = Goal.all
+      @projects = Project.all
       render :edit
     else
       redirect_to project_sprint_path(@project, @sprint)
@@ -31,13 +35,19 @@ class SprintsController < ApplicationController
   def new
     @sprint = Sprint.new
     @goals = Goal.all
+    @projects = Project.all
+    set_project_variable
   end
 
   def create
     @sprint = Sprint.new
     @goals = Goal.all
+    @sprint.goals.clear
     @sprint.update(sprint_params)
     if @sprint.errors.any?
+      @goals = Goal.all
+      @projects = Project.all
+      set_project_variable
       render :new
     else
       redirect_to project_sprint_path(@sprint.project, @sprint)
