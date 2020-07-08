@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter has-background-light p-8 rounded-lg flex flex-col items-center justify-center">
+        <%= image_tag("logo-black.png", class: "image") %>
+        <h1 class="text-xl font-bold text-gray-900">Login to your account</h1>
+        
+        <div class="w-full">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <%= f.email_field :email, placeholder: "your email", class: "input", autofocus: true, autocomplete: "email" %>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <%= f.password_field :password, placeholder: "your password", class: "input" %>
+              </div>
+        <a href="#" class="text-sm py-2 text-blue-500 underline">Forgot password?</a>
+            </div>
+            <div class="field">
+              <div class="control">
+                <%= f.submit "Login", class: "button is-link is-fullwidth" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="py-4 w-full flex flex-col items-center justify-center">
+          <p class="pb-4">or</p>
+          <div class="field w-full">
+          <%= link_to "Login with GitHub", user_github_omniauth_authorize_path, :class => "button is-fullwidth" %>
+          </div>
+        </div>
+        <div class="py-4 flex flex-col items-center justify-center">
+          <%= link_to "Create a new account", new_user_registration_path, :class => 'text-blue-500 underline' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

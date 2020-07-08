@@ -1,0 +1,82 @@
+<section class='section'>
+  <div class='container'>
+      <h2 class="title">
+        Project: <%= @project.name %>
+      </h2>
+    <div class="buttons">
+      <%= link_to "Edit", edit_project_path(@project), class: "button is-primary" %>
+      <%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@project.name}?\"" }, class: "button is-danger" %>
+    </div>
+      <div class="columns">
+      <div class="column is-6">
+        <nav class="panel h-full">
+          <p class="panel-heading"> Description </p>
+          <p class="panel-block"> <%= @project.description %> </p>
+        </nav>
+        </div>
+        <div class="column is-6">
+          <nav class="panel">
+            <p class="panel-heading">
+            Users
+            </p>
+            <% @project.users.uniq.each do |u| %>
+              <a href="<%= user_path(u) %>" class="is-active">
+                <div href="" class="panel-block flex flex-row justify-between">
+                  <div class="">
+                    <%= u.name %>&nbsp;
+                  </div>
+                  <div class="buttons">
+                    <%= link_to "Edit", edit_user_path(u), class: "button is-primary is-small is-light" %>
+                  </div>
+                </div>
+              </a>
+            <% end %>
+          </nav>
+        </div>
+        </div>
+      <div class="columns">
+        <div class="column is-6">
+          <nav class="panel">
+            <p class="panel-heading">
+            Sprints
+            </p>
+            <% @project.sprints.uniq.each do |s| %>
+              <a href="<%= project_sprint_path(s.project, s) %>" class="is-active">
+                <div href="" class="panel-block flex flex-row justify-between">
+                  <div class="">
+                    <%= s.name %>&nbsp;
+                  </div>
+                  <div class="buttons">
+                    <%= link_to "Edit", edit_project_sprint_path(s.project, s), class: "button is-primary is-small is-light" %>
+                    <%= link_to "Delete", project_sprint_path(s.project, s), method: :delete, data: { confirm: "Are you sure you want to delete \"#{s.name}?\"" }, class: "button is-danger is-small is-light" %>
+                  </div>
+                </div>
+              </a>
+            <% end %>
+            <%= link_to "+ New Sprint", new_project_sprint_path(@project), class: "panel-block is-size-7 has-text-weight-bold" %>
+          </nav>
+        </div>
+        <div class="column is-6">
+          <nav class="panel">
+            <p class="panel-heading">
+            Goals
+            </p>
+            <% @project.goals.each do |g| %>
+              <a href="<%= project_goal_path(g.project, g) %>" class="is-active">
+                <div href="" class="panel-block flex flex-row justify-between">
+                  <div class="">
+                    <%= truncate(g.name) %>&nbsp;
+                  </div>
+                  <div class="buttons">
+                    <%= link_to "Edit", edit_project_goal_path(g.project, g), class: "button is-primary is-small is-light" %>
+                    <%= link_to "Delete", project_goal_path(g.project, g), method: :delete, data: { confirm: "Are you sure you want to delete \"#{g.name}?\"" }, class: "button is-danger is-small is-light" %>
+                  </div>
+                </div>
+              </a>
+            <% end %>
+            <%= link_to "+ New Goal", new_project_goal_path(@project), class: "panel-block is-size-7 has-text-weight-bold" %>
+          </nav>
+        </div>
+        </div>
+  </div> 
+</section>

@@ -1,0 +1,37 @@
+<section class='section'>
+  <div class='container'>
+    <h2 class="title"> User: <%= @user.name %> </h2>
+    <h3 class="subtitle"> Role: <%= @user.role.name %> </h3>
+    <div class="buttons">
+      <%= link_to "Edit", edit_user_path(@user), class: "button is-primary" %>
+      <%= link_to "Delete", user_path(@user), method: :delete, data: { confirm: "Are you sure you want to delete \"#{@user.name}?\"" }, class: "button is-danger" %>
+    </div>
+    <nav class="panel">
+      <div class="panel-heading">
+          <div> Projects </div>
+      </div>
+      <% if @user.projects.any? %>
+        <% @user.projects.uniq.each do |p| %>
+          <a href="<%= project_path(p) %>">
+            <div href="" class="panel-block flex flex-row justify-between">
+            
+              <div class="">
+                <%= p.name %>
+              </div>
+              
+              <div class="buttons">
+                <%= link_to "View", project_path(p), class: "button is-small is-light" %>
+                <%= link_to "Edit", edit_project_path(p), class: "button is-primary is-small is-light" %>
+              </div>
+            </div>
+          </a>
+        <% end %>
+      <% else %>
+        <div class="panel-block">
+          No projects
+        </div>
+      <% end %>
+    </nav>
+      <%= link_to "All Users", users_path, class: "button" %>
+  </div>
+</section>

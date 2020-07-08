@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="layout-default">
+    <%= render 'nav' %>
+      <% if notice %>
+        <section class="section">
+          <div class="container">
+            <div class="notification is-success"><%= notice %></div>
+          </div>
+        </section>
+      <% end %>
+      <% if alert %>
+        <section class="section">
+          <div class="container">
+            <div class="notification is-warning"><%= alert %></div>
+          </div>
+        </section>
+      <% end %>
+      <section class="section">
+      <div class="container columns is-fluid">
+      <% if current_user %>
+      <div class="column is-3">
+      <aside class="menu">
+       <%= render 'menu' %>
+      </aside>
+      </div>
+      <% end %>
+      <div class="column">
+      <%= yield %>
+      </div>
+      </div>
+      </section>
+  </body>
+</html>

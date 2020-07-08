@@ -1,0 +1,16 @@
+<% content_for :side_menu do %>
+<%= render 'menu' %>
+<% end %>
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Projects
+      </p>
+     <% @projects.each do |p| %>
+      <%= link_to p.name, project_path(p), class: "panel-block is-active" %>
+      <% end %>
+    <%= link_to "+ New Project", new_project_path, class: "panel-block is-size-7 has-text-weight-bold" %>
+    </nav>
+  </div>
+</section>

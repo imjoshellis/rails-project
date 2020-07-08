@@ -1,0 +1,24 @@
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Goals
+      </p>
+    <% @goals.each do |g| %>
+      <a href="<%= project_goal_path(g.project, g) %>" class="is-active">
+        <div href="" class="panel-block flex flex-row justify-between">
+          <div class="">
+            <%= g.name %>&nbsp;
+          </div>
+          <div class="buttons">
+            <%= link_to "View", project_goal_path(g.project, g), class: "button is-small is-light" %>
+            <%= link_to "Edit", edit_project_goal_path(g.project, g), class: "button is-primary is-small is-light" %>
+            <%= link_to "Delete", project_goal_path(g.project, g), method: :delete, data: { confirm: "Are you sure you want to delete \"#{g.name}?\"" }, class: "button is-danger is-small is-light" %>
+          </div>
+        </div>
+      </a>
+    <% end %>
+    <%= link_to "+ New Goal", new_goal_path, class: "panel-block is-size-7 has-text-weight-bold" %>
+    </nav>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+<h2 class="title">Editing: <%= @sprint.name %></h2>
+<%= render partial: 'errors', locals: {object: @sprint} %>
+<%= form_for(@sprint, html: { method: :patch }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>

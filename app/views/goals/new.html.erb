@@ -1,0 +1,5 @@
+<h2 class="title">Create New Goal</h2>
+<%= render partial: 'errors', locals: {object: @goal} %>
+<%= form_for(@goal, html: { method: :post }) do |f| %>
+<%= render partial: 'form', locals: {f: f} %>
+<% end %>

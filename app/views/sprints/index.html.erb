@@ -1,0 +1,27 @@
+<% content_for :side_menu do %>
+<%= render 'menu' %>
+<% end %>
+<section class="section">
+  <div class="container">
+    <nav class="panel">
+      <p class="panel-heading">
+        Sprints
+      </p>
+    <% @sprints.each do |s| %>
+      <a href="<%= project_sprint_path(s.project, s) %>" class="is-active">
+        <div href="" class="panel-block flex flex-row justify-between">
+          <div class="">
+            <%= s.name %>&nbsp;
+          </div>
+          <div class="buttons">
+            <%= link_to "View", project_sprint_path(s.project, s), class: "button is-small is-light" %>
+            <%= link_to "Edit", edit_project_sprint_path(s.project, s), class: "button is-primary is-small is-light" %>
+            <%= link_to "Delete", project_sprint_path(s.project, s), method: :delete, data: { confirm: "Are you sure you want to delete \"#{s.name}?\"" }, class: "button is-danger is-small is-light" %>
+          </div>
+        </div>
+      </a>
+    <% end %>
+    <%= link_to "+ New Sprint", new_sprint_path, class: "panel-block is-size-7 has-text-weight-bold" %>
+    </nav>
+  </div>
+</section>
