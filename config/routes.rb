@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "callbacks"}
   root "projects#index"
+  get "admin", to: "projects#admin"
   resources :roles
   resources :users
   resources :stories

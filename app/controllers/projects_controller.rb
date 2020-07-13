@@ -3,6 +3,12 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def admin
+    if !current_user.admin?
+      redirect_to projects_path
+    end
+  end
+
   def show
     @project = Project.find(params[:id])
   end
